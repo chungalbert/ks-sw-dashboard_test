@@ -9,7 +9,13 @@ export function getSupabase(): SupabaseClient | null {
     if (!client) {
       const urls = defaultDeriveNeonUrls(import.meta.env.VITE_NEON_URL!);
       client = createNeonClient({
-        auth: { url: urls.auth, adapter: SupabaseAuthAdapter() },
+        auth: {
+          url: urls.auth,
+          adapter: SupabaseAuthAdapter(),
+          // Username login calls lookup_login_email before a session exists.
+          // Anonymous JWT is not a user; a real session still wins in getJWTToken.
+          allowAnonymous: true,
+        },
         dataApi: { url: urls.dataApi },
       }) as unknown as SupabaseClient;
     }

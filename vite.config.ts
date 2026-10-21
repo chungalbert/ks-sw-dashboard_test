@@ -9,6 +9,8 @@ const emptyMessages = path.resolve(rootDir, "src/shims/empty-ts-evtx-messages.ts
 
 export default defineConfig({
   plugins: [react()],
+  // @ts-evtx/core reads process.env.EVTX_DEBUG at import time and crashes the login page in the browser.
+  define: { "process.env.EVTX_DEBUG": "false" },
   base: process.env.GITHUB_ACTIONS ? "/ks-sw-dashboard/" : "/",
   resolve: {
     alias: [

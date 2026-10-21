@@ -34,6 +34,7 @@ jobs:
         env:
           VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
           VITE_SUPABASE_ANON_KEY: ${{ secrets.VITE_SUPABASE_ANON_KEY }}
+          VITE_NEON_URL: https://ep-divine-meadow-azqo19a2.c-3.ap-southeast-1.aws.neon.tech/neondb
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
