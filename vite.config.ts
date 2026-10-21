@@ -11,7 +11,7 @@ export default defineConfig({
   plugins: [react()],
   // @ts-evtx/core reads process.env.EVTX_DEBUG at import time and crashes the login page in the browser.
   define: { "process.env.EVTX_DEBUG": "false" },
-  base: process.env.GITHUB_ACTIONS ? "/ks-sw-dashboard/" : "/",
+  base: process.env.GITHUB_ACTIONS ? "/ks-sw-dashboard_test/" : "/",
   resolve: {
     alias: [
       { find: /^node:fs\/promises$/, replacement: emptyFs },
